@@ -76,10 +76,10 @@ public class opRadio implements Radio {
 		
 		if (opcion == true) {
 			tipoSenal = false;
-			
+			emisora = 87.9f;
 		} else {
 			tipoSenal = true;
-		
+			emisora = 530f;
 		}
 		mensaje =" "+ tipoSenal;
 		
@@ -104,7 +104,9 @@ public class opRadio implements Radio {
 			emisora = emisora + 10f;
 
 			
-		} 
+		} else if(emisora >= 86f && emisora<=108f){
+			emisora = emisora + 0.2f;
+		}
 		
 		
 	}
@@ -117,7 +119,9 @@ public class opRadio implements Radio {
 			
 			emisora= emisora- 10f;
 			
-		} 
+		} else if(emisora >= 86f && emisora<=107f){
+			emisora = emisora -0.2f;
+		}
 		
 
 	}

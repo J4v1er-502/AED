@@ -19,8 +19,7 @@ public class Menu {
 		
 		Scanner in = new Scanner(System.in);
 		int option = 0;
-		/*opRadio radio = new opRadio();*/
-		Acciones radio = new Acciones();
+		opRadio radio = new opRadio();
 		String senal;
 
 		
@@ -142,6 +141,44 @@ public class Menu {
                             	
                             	
                             break;
+
+							case 4:
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println(":: Radio ::");
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println("Ingrese el numero del boton para guardar la emisora, en el rango de 1-12");
+								System.out.println("-----------------------------------------------------------------------");
+
+								option= Integer.parseInt(in.nextLine());
+								radio.guardarEmisoraActual( option);
+
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println(":: Radio ::");
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println("Se guardo la emisora 540.0 en en el boton " + option);
+								System.out.println("-----------------------------------------------------------------------");
+
+
+							break;
+
+							case 5:
+
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println(":: Radio ::");
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println("Ingrese el numero del boton con la emisora guardada, en el rango de 1-12");
+								System.out.println("-----------------------------------------------------------------------");
+
+								option= Integer.parseInt(in.nextLine());
+								radio.seleccionarEmisoraGuardada(option);
+
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println(":: Radio ::");
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println("Se seleciono la emisora 540.0 guardada en el boton " + option);
+								System.out.println("-----------------------------------------------------------------------");
+
+							break;
                             	
                             	
                             case 6: {
