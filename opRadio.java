@@ -16,7 +16,8 @@ public class opRadio implements Radio {
 	private boolean encendido;
 	private boolean tipoSenal;
 	
-	private int emisora;
+	
+	private float emisora;
 	
 	private ArrayList<Integer> emisorasGuardadas = new ArrayList<Integer>();
 	
@@ -33,14 +34,14 @@ public class opRadio implements Radio {
 	}
 
 	@Override
-	public String guardarEmisoraActual(int numBoton) {
+	public String guardarEmisoraActual(int option) {
 		// TODO Auto-generated method stub
 		mensaje = "";
 		
 		if (emisorasGuardadas.size() < 12) {
 			
-			emisorasGuardadas.add(numBoton);
-            mensaje = "Emisora " + numBoton + " guardada en la lista";
+			emisorasGuardadas.add(option);
+            mensaje = "Emisora " + option + " guardada en la lista";
 			
 		}
 		
@@ -48,14 +49,14 @@ public class opRadio implements Radio {
 	}
 
 	@Override
-	public String seleccionarEmisoraGuardada(int numBoton) {
+	public String seleccionarEmisoraGuardada(int option) {
 		// TODO Auto-generated method stub
 		
 		for (int i = 0; i < emisorasGuardadas.size(); i++) {
         	
-            if (numBoton == emisorasGuardadas.get(i)) {
+            if (option == emisorasGuardadas.get(i)) {
 
-                numBoton = emisorasGuardadas.get(i);
+                option = emisorasGuardadas.get(i);
                 mensaje = "Emisora cargada " + this.emisora + " con la posicion " + i;
                 
             } else {
@@ -70,20 +71,19 @@ public class opRadio implements Radio {
 	}
 
 	@Override
-	public boolean cambiarSenal(boolean opcion) {
+	public String cambiarSenal(boolean opcion) {
 		// TODO Auto-generated method stub
 		
 		if (opcion == true) {
+			tipoSenal = false;
 			
-			if (tipoSenal == true) {
-				tipoSenal = false;
-			} else {
-				tipoSenal = true;
-			}
-			
-		} 
+		} else {
+			tipoSenal = true;
 		
-		return tipoSenal;
+		}
+		mensaje =" "+ tipoSenal;
+		
+		return mensaje;
 	}
 
 	@Override
@@ -97,11 +97,15 @@ public class opRadio implements Radio {
 	public void subirEmisora() {
 		// TODO Auto-generated method stub
 		
-		if (emisora < 13 && emisora > 0) {
+
+
+		if (emisora >= 530f && emisora  <=1610f) {
 			
-			emisora += 1;
+			emisora = emisora + 10f;
+
 			
 		} 
+		
 		
 	}
 
@@ -109,11 +113,12 @@ public class opRadio implements Radio {
 	public void bajarEmisora() {
 		// TODO Auto-generated method stub
 
-		if (emisora < 13 && emisora > 0) {
+		if (emisora >= 530f && emisora  <=1610f) {
 			
-			emisora -= 1;
+			emisora= emisora- 10f;
 			
 		} 
+		
 
 	}
 

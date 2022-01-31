@@ -19,23 +19,28 @@ public class Menu {
 		
 		Scanner in = new Scanner(System.in);
 		int option = 0;
-		boolean senalT = true;
-		opRadio radio = new opRadio();
+		/*opRadio radio = new opRadio();*/
+		Acciones radio = new Acciones();
 		String senal;
-		
-		String menu= "Seleccione la opcion que desea realizar:\n\n"
-        		+ "1. Encender/Apagar el radio"
-        		+ "\n2. Cambiar tipo de Emisora"
-        		+ "\\n3. Cambiar senal"
-        		+ "\n4. Guardar emisora"
-        		+ "\n5. Seleccionar emisora guardada";
+
 		
 		do {
                     try {
                         
-                        System.out.println("*** PROGRAMA DE RADIO ***");
-                        System.out.println("\n");
-                        System.out.println(menu);
+                        System.out.println("***********************************************************************");
+        				System.out.println(":: Radio ::");
+        				System.out.println("Bienvenido a la Radio.");
+        				System.out.println("-----------------------------------------------------------------------");
+        				System.out.println("1. Encender el radio");
+        				System.out.println("2. Cambiar senal ");
+        				System.out.println("3. Cambiar tipo de Emisora");
+						System.out.println("4. Guardar  emisora guardada");
+        				System.out.println("5. Seleccionar emisora guardada");
+						System.out.println("5. Apagar el radio");
+        				System.out.println("-----------------------------------------------------------------------");
+        				System.out.println("Seleccione la opcion que desea realizar en la radio");
+						System.out.println("***********************************************************************\n\n");
+
                         option= Integer.parseInt(in.nextLine());
                         switch(option) {
                             case 1: 
@@ -43,85 +48,108 @@ public class Menu {
                             	radio.encenderApagar();
                             	if (radio.comprobarEncendida() == true) {
                             		
-                            		System.out.println("Radio encendida con exito");
+                            		System.out.println("-----------------------------------------------------------------------");
+        							System.out.println(":: Radio ::");
+        							System.out.println("-----------------------------------------------------------------------");
+        							System.out.println("Radio encendida con exito");
+									System.out.println("-----------------------------------------------------------------------\n\n");
                             		
                             	} else {
-                            		
-                            		System.out.println("Radio apagada con exito");
+
+                            		System.out.println("-----------------------------------------------------------------------");
+        							System.out.println(":: Radio ::");
+        							System.out.println("-----------------------------------------------------------------------");
+        							System.out.println("Radio apagada con exito");
+									System.out.println("-----------------------------------------------------------------------\n\n");
                             		
                             	}
                             	
                             break;
                              
                             case 2:
+
+								if (radio.getTipoSenal() == true) {
+									senal = "FM";
+								} else {
+									senal = "AM";
+								}
+
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println(":: Radio ::");
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println("Se encuentra en la senal " + senal);
+								System.out.println("-----------------------------------------------------------------------");
+
+								boolean senalT = radio.getTipoSenal();
+
+								radio.cambiarSenal(senalT);
                             	
-                            	if (radio.comprobarEncendida() == true) {
-                            		
-                            		System.out.println("Desea subir emisora o bajar? 1. subir \n2. bajar");
-                            		option= Integer.parseInt(in.nextLine());
-                            		
-                            		switch(option) {
-                            		
-                            		case 1:
-                            			
-                            			radio.subirEmisora();
-                            			
-                            			System.out.println("Se encuentra en la emisora: " + radio.getEmisoraActual());
-                            		break;
-                            		
-                            		case 2:
-                            			
-                            			radio.bajarEmisora();
-                            			
-                            			System.out.println("Se encuentra en la emisora: " + radio.getEmisoraActual());
-                            		break;
-                            		
-                            		}
-                            		
-                            	} else {
-                            		
-                            		System.out.println("La radio se encuentra apagada");
-                            		
-                            	}
                             	
                             break;
                             
                             case 3:
+
+								if (radio.comprobarEncendida() == true) {
+								
+									System.out.println("-----------------------------------------------------------------------");
+									System.out.println(":: Radio ::");
+									System.out.println("-----------------------------------------------------------------------");
+									System.out.println("Desea subir emisora o bajar?");
+									System.out.println("-----------------------------------------------------------------------");
+									System.out.println("1. Subir");
+									System.out.println("2. Bajar ");
+									System.out.println("-----------------------------------------------------------------------\n\n");                            		
+
+									option= Integer.parseInt(in.nextLine());
+
+									switch(option) {
+									
+									case 1:
+
+										radio.subirEmisora();
+
+										System.out.println("-----------------------------------------------------------------------");
+										System.out.println(":: Radio ::");
+										System.out.println("-----------------------------------------------------------------------");
+										System.out.println("Se encuentra en la emisora: " + radio.getEmisoraActual());
+										System.out.println("-----------------------------------------------------------------------");
+
+									break;
+									
+									case 2:
+
+										radio.bajarEmisora();
+
+										System.out.println("-----------------------------------------------------------------------");
+										System.out.println(":: Radio ::");
+										System.out.println("-----------------------------------------------------------------------");
+										System.out.println("Se encuentra en la emisora: " + radio.getEmisoraActual());
+										System.out.println("-----------------------------------------------------------------------");
+
+									break;
+
+									}
+								
+								} else {
+
+									System.out.println("-----------------------------------------------------------------------");
+									System.out.println(":: Radio ::");
+									System.out.println("-----------------------------------------------------------------------");
+									System.out.println("La radio se encuentra apagada");
+									System.out.println("-----------------------------------------------------------------------");
+
+								}
                             	
-                            	System.out.println("Desea cambiar la senal?");
-                            	if (radio.getTipoSenal() == true) {
-                            		senal = "AM";
-                            	} else {
-                            		senal = "FM";
-                            	}
-                            	
-                            	System.out.println("Se encuentra en la senal " + senal);
-                            	System.out.println("1. Si \n2. No");
-                            	option= Integer.parseInt(in.nextLine());
-                            	
-                            	switch(option) {
-                            	
-                            	case 1:
-                            		
-                            		senalT = true;
-                            		
-                            	break;
-                            	
-                            	case 2:
-                            		
-                            		senalT = false;
-                            		
-                            	break;
-                            		
-                            	}
-                            	
-                            	radio.cambiarSenal(senalT);
                             	
                             break;
                             	
                             	
                             case 6: {
-                                System.out.println("Apagando el radio....");
+                                System.out.println("-----------------------------------------------------------------------");
+								System.out.println(":: Radio ::");
+								System.out.println("-----------------------------------------------------------------------");
+								System.out.println("Apagando Radio.... " );
+								System.out.println("-----------------------------------------------------------------------");
 
                                 try {
                                 Thread.sleep(1150);
